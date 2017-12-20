@@ -59,70 +59,70 @@ class Comment
     /**
      * @return User
      */
-    public function getUser(): User {
+    public function getUser() {
         return $this->user;
     }
 
     /**
      * @param User $user
      */
-    public function setUser(User $user) {
+    public function setUser( $user) {
         $this->user = $user;
     }
 
     /**
      * @return Recipe
      */
-    public function getRecipe(): Recipe {
+    public function getRecipe() {
         return $this->recipe;
     }
 
     /**
      * @param Recipe $recipe
      */
-    public function setRecipe(Recipe $recipe) {
+    public function setRecipe( $recipe) {
         $this->recipe = $recipe;
     }
 
     /**
      * @return string
      */
-    public function getContent(): string {
+    public function getContent() {
         return $this->content;
     }
 
     /**
      * @param string $content
      */
-    public function setContent(string $content) {
+    public function setContent( $content) {
         $this->content = $content;
     }
 
     /**
      * @return date
      */
-    public function getCreatedAt(): date {
+    public function getCreatedAt() {
         return $this->created_at;
     }
 
     /**
      * @param date $created_at
      */
-    public function setCreatedAt(date $created_at) {
+    public function setCreatedAt( $created_at) {
         $this->created_at = $created_at;
     }
 
     /**
      * @return date
      */
-    public function getUpdatedAt(): date {
+    public function getUpdatedAt() {
         return $this->updated_at;
     }
 
     /**
      * @param date $updated_at
      */
-    public function setUpdatedAt(date $updated_at) {
+    public function setUpdatedAt( $updated_at) {
         $this->updated_at = $updated_at;
     }
 }

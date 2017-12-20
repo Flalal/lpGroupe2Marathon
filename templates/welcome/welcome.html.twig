@@ -14,7 +14,7 @@
             </div>
             <h3>*** Recettes ***</h3>
             {% for recette in recettes %}
-                Nom : {{ recette.name }} {#<a href="{{ path("app_recette_recetteId", {"id" :recette.id}) }}"><button>Affichage</button></a>#}
+                Nom : {{ recette.name }} <a href="{{ path("app_recette_recetteId", {"id" :recette.id}) }}"><button>Affichage</button></a></br>
             {% endfor %}
 
             <h3>*** Articles ***</h3>
