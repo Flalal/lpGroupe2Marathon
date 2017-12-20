@@ -18,7 +18,6 @@ class MediaType extends AbstractType
             ->add('title')
             ->add('path')
             ->add('type')
-
         ;
     }
 

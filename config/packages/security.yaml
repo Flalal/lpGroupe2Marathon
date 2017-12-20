@@ -47,5 +47,5 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/recettes/edit, roles: ROLE_ADMIN }
         - { path: ^/recettes/add, roles: ROLE_ADMIN }
-        - { path: ^/article/edit/ , roles: ROLE_ADMIN }
-        - { path: ^/article/creation/ , roles: ROLE_ADMIN }
+        - { path: ^/article/edit , roles: ROLE_ADMIN }
+        - { path: ^/article/creation , roles: ROLE_ADMIN }

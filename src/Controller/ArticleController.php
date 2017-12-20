@@ -83,6 +83,9 @@ class ArticleController extends Controller
     public function showRecetteId(Article $article){
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository(Article::class)->findOneBy(['id'=>$article->getId()]);
+        /** @var Article $article */
+        $article->setHitcount($article->getHitcount()+1);
+        $em->flush();
         return $this->render('article/articleid.html.twig',['article'=>$article, ]);
     }
 
