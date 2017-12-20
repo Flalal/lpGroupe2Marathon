@@ -209,28 +209,28 @@ class Recipe
     /**
      * @return time
      */
-    public function getPreparationTime(): time {
+    public function getPreparationTime() {
         return $this->preparation_time;
     }
 
     /**
      * @param time $preparation_time
      */
-    public function setPreparationTime(time $preparation_time) {
+    public function setPreparationTime( $preparation_time) {
         $this->preparation_time = $preparation_time;
     }
 
     /**
      * @return time
      */
-    public function getCookingTime(): time {
+    public function getCookingTime() {
         return $this->cooking_time;
     }
 
     /**
      * @param time $cooking_time
      */
-    public function setCookingTime(time $cooking_time) {
+    public function setCookingTime( $cooking_time) {
         $this->cooking_time = $cooking_time;
     }
 

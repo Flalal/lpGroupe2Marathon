@@ -171,14 +171,14 @@ class Article {
     /**
      * @return date
      */
-    public function getCreatedAt() {
+    public function getCreatedAt(){
         return $this->created_at;
     }
 
     /**
      * @param date $created_at
      */
-    public function setCreatedAt($created_at) {
+    public function setCreatedAt( $created_at) {
         $this->created_at = $created_at;
     }
 
@@ -192,7 +192,7 @@ class Article {
     /**
      * @param date $updated_at
      */
-    public function setUpdatedAt($updated_at) {
+    public function setUpdatedAt( $updated_at) {
         $this->updated_at = $updated_at;
     }
 

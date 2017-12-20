@@ -9,10 +9,19 @@
                 Yummy
             </div>
 
-
             <div class="links">
                 <a href="http://www.iut-lens.univ-artois.fr">Marathon du Web</a>
             </div>
+            <h3>*** Recettes ***</h3>
+            {% for recette in recettes %}
+                Nom : {{ recette.name }}
+            {% endfor %}
+
+            <h3>*** Articles ***</h3>
+            {% for article in articles %}
+                    Titre :{{ article.title }}</br>
+            {% endfor %}
+
         </div>
     </div>
 {% endblock %}
