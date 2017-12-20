@@ -1,26 +1,35 @@
+<<<<<<< HEAD
+<div class="nav">
+    <div id="logo">
+        <a href="{{ path('welcome') }}"> <img src="./build/img/logo.png"></a>
+    </div>
+
+    <div id="recette"><a href="{{ path('app_recette_show') }}">Recette</a></div>
+    <div id="article"><a href="{{ path('app_article_show') }}">Article</a></div>
+
+    {% if app.user %}
+        {% if app.user.isAdmin %}
+            <div id="admin"><a href="{{ path('admin') }}">Admin</a></div>
+            <div id="depo-recette"><a href="{{ path('app_recette_add') }}">Déposer une recette</a></div>
+            <div id="depo-article"><a href="{{ path('app_article_creation') }}">Déposer un article</a></div>
+        {% endif %}
+        <div id="log">
+            <a href="{{ path('logout') }}">Logout</a>
+
+    {% else %}
+        <a href="{{ path('login') }}">Login</a>
+        <a href="{{ path('register') }}">Register</a>
+        </div>
+    {% endif %}
 
 
-<div class="top-right links">
-    <a href="{{ path('welcome') }}"> <img src="./build/img/logo1.png"></a>
-    </li>
-    <div class="recherche_p">
+    <div id="recherche_p">
         <form action="/search" id="searchthis" method="get">
-            <input id="search" name="q" type="text" placeholder="Rechercher" />
+            <input id="search" name="q" type="text" placeholder="Rechercher"/>
             <input id="search-btn" type="submit" value="Rechercher" />
         </form>
 
     </div>
-    {% if app.user %}
-        {% if app.user.isAdmin %}
-            <a href="{{ path('admin') }}">Admin</a>
-            <a href="{{ path('app_recette_add') }}">Déposer une recette</a>
-            <a href="{{ path('app_article_creation') }}">Déposer un article</a>
-        {% endif %}
-        <a href="{{ path('logout') }}">Logout</a>
-    {% else %}
-        <a href="{{ path('login') }}">Login</a>
-        <a href="{{ path('register') }}">Register</a>
-    {% endif %}
-    <a href="{{ path('app_recette_show') }}">Recette</a>
-    <a href="{{ path('app_article_show') }}">Article</a>
+
 </div>
+<div id="barre"></div>
