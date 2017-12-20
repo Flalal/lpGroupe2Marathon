@@ -1,36 +1,44 @@
-<div class="top-right links">
-    <img src="../public/image/logo.png">
-    <li><a href="#">Recettes</a>
-        <!-- <ul>
-            <li><a href="#">Plats</a></li>
-            <li><a href="#">Desserts</a></li>
-            <li><a href="#">Boissons</a></li>
-            <li><a href="#">Vegan</a></li>
-            <li><a href="#">Free Gluten</a></li>
-        </ul> -->
-    </li>
-    <li>
-        <a href="">Article</a>
-    </li>
-    <li>
-        <a href="">Déposer une recette</a>
-    </li>
-    <div class="recherche_p">
-        <form action="/search" id="searchthis" method="get">
-            <input id="search" name="q" type="text" placeholder="Rechercher" />
-            <input id="search-btn" type="submit" value="Rechercher" />
-        </form>
+<link rel="stylesheet" type="text/css" href="../public/style-menu.css">
 
+<div id="menu-desktop">
+    <div id="logo">
+        <a href="http://172.31.146.100/~lpGroupe2/"><img src="../public/image/logo.png"></a>
     </div>
+    <div id="btn-recette">
+        <a href="#">Recettes</a>
+    </div>
+    <div id="btn-article">
+        <a href="">Article</a>
+    </div>
+    <div id="btn-deposer">
+        <a href="">Déposer une recette</a>
+    </div>
+
     {% if app.user %}
         {% if not app.user.isAdmin %}
-            <a href="{{ path('welcome') }}">Home</a>
+            <div id="btn-home">
+                <a href="{{ path('welcome') }}">Home</a>
+            </div>
         {% else %}
-            <a href="{{ path('admin') }}">Admin</a>
+            <div id="btn-admin">
+                <a href="{{ path('admin') }}">Admin</a>
+            </div>
         {% endif %}
+        <div id="btn-log">
         <a href="{{ path('logout') }}">Logout</a>
     {% else %}
         <a href="{{ path('login') }}">Login</a>
         <a href="{{ path('register') }}">Register</a>
+        </div>
     {% endif %}
+
+    <div id="recherche_p">
+        <form action="/search" id="searchthis" method="get">
+            <input id="search" name="q" type="text" placeholder="Rechercher"/>
+            <input id="search-btn" type="submit" value="Rechercher" />
+        </form>
+
+    </div>
+
 </div>
+<div id="barre"></div>
