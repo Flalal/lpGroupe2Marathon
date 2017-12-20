@@ -17,6 +17,9 @@
                 <li>Crée le : {{ recette.createdAt | date }}</li>
                 <li>Mise à jour le  : {{ recette.updatedAt | date}}</li></br>
             </ul>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
 
             <h5>Commentaires</h5>
             {% for comment in comments %}
@@ -24,9 +27,9 @@
                 Crée le :{{ comment.createdAt | date }} - Modification le : {{ comment.updatedAt | date }}</br>
             {% endfor %}
 
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+            {{ form_start(form2) }}
+            {{ form_widget(form2) }}
+            {{ form_end(form2) }}
 
         </div>
     </div>

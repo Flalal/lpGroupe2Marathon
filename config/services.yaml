@@ -32,18 +32,22 @@ services:
 
     App\Entity\Recipe:
         public: true
-
     App\Entity\Comment:
         public: true
-    App\Comment\formulaireComment:
+    App\Entity\Vote:
         public: true
+
     App\Event\CommentEvent:
         public: true
-    App\Subscribers\CommentSubscriber:
-        public: true
-
-
     App\Event\RecetteEvent:
         public: true
     App\Event\ArticleEvent:
         public: true
+    App\Event\VoteEvent:
+        public: true
+
+    App\Subscribers\CommentSubscriber:
+        public: true
+
+
+

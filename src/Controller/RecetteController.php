@@ -11,10 +11,13 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Recipe;
 use App\AppEvent;
+use App\Entity\Vote;
 use App\Event\CommentEvent;
 use App\Event\RecetteEvent;
+use App\Event\VoteEvent;
 use App\Form\CommentType;
 use App\Form\RecetteType;
+use App\Form\VoteType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -88,11 +91,25 @@ class RecetteController extends Controller
         $em = $this->getDoctrine()->getManager();
         $comments = $em->getRepository(Comment::class)->findBy(['recipe' => $recette->getId()]);
 
-        $comment = $this->get(Comment::class);
-        $form = $this->createForm(CommentType::class, $comment);
+        $vote = $this->get(Vote::class);
+        $form = $this->createForm(VoteType::class, $vote);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $voteEvent = $this->get(VoteEvent::class);
+            /** @var VoteEvent $voteEvent */
+            $voteEvent->setVote($vote);
+            $voteEvent->setRecette($recette);
+            $dispatcher = $this->get('event_dispatcher');
+            $dispatcher->dispatch(AppEvent::VOTE_ADD, $voteEvent);
+            return $this->redirectToRoute("app_recette_recetteid", ['id'=> $recette->getId()]);
+        }
+
+        $comment = $this->get(Comment::class);
+        $form2 = $this->createForm(CommentType::class, $comment);
+
+        $form2->handleRequest($request);
+        if ($form2->isSubmitted() && $form2->isValid()) {
             $commentEvent = $this->get(CommentEvent::class);
             /** @var CommentEvent $commentEvent */
             $commentEvent->setComment($comment);
@@ -104,7 +121,8 @@ class RecetteController extends Controller
         return $this->render('recette/recetteid.html.twig',[
             'recette'=>$recette,
             'comments' => $comments,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'form2' => $form2->createView(),
         ]);
     }
 
