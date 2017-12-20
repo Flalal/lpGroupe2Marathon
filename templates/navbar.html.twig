@@ -1,19 +1,7 @@
+<link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}">
+
 <div class="top-right links">
-    <img src="../public/image/logo.png">
-    <li><a href="#">Recettes</a>
-        <!-- <ul>
-            <li><a href="#">Plats</a></li>
-            <li><a href="#">Desserts</a></li>
-            <li><a href="#">Boissons</a></li>
-            <li><a href="#">Vegan</a></li>
-            <li><a href="#">Free Gluten</a></li>
-        </ul> -->
-    </li>
-    <li>
-        <a href="">Article</a>
-    </li>
-    <li>
-        <a href="">Déposer une recette</a>
+    <a href="{{ path('welcome') }}"> <img src="../public/image/logo.png"></a>
     </li>
     <div class="recherche_p">
         <form action="/search" id="searchthis" method="get">
@@ -23,16 +11,16 @@
 
     </div>
     {% if app.user %}
-        {% if not app.user.isAdmin %}
-            <a href="{{ path('welcome') }}">Home</a>
-        {% else %}
+        {% if app.user.isAdmin %}
             <a href="{{ path('admin') }}">Admin</a>
+            <a href="{{ path('app_recette_add') }}">Déposer une recette</a>
+            <a href="{{ path('app_article_creation') }}">Déposer un article</a>
         {% endif %}
-        <a href="{{ path('app_recette_show') }}">Recette</a>
         <a href="{{ path('logout') }}">Logout</a>
-        <a href="{{ path('app_article_show') }}">Article</a>
     {% else %}
         <a href="{{ path('login') }}">Login</a>
         <a href="{{ path('register') }}">Register</a>
     {% endif %}
+    <a href="{{ path('app_recette_show') }}">Recette</a>
+    <a href="{{ path('app_article_show') }}">Article</a>
 </div>

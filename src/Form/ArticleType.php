@@ -18,6 +18,7 @@ class ArticleType extends AbstractType
             ->add('title')
             ->add('summary')
             ->add('content')
+            ->add('media', MediaType::class)
             ->addEventListener(
                 FormEvents::PRE_SET_DATA,
                 array($this, 'onPreSetData')
