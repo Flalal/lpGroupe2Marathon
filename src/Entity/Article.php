@@ -87,14 +87,14 @@ class Article {
     /**
      * @return User
      */
-    public function getUser(): User {
+    public function getUser(){
         return $this->user;
     }
 
     /**
      * @param User $user
      */
-    public function setUser(User $user) {
+    public function setUser($user) {
         $this->user = $user;
     }
 
@@ -108,91 +108,91 @@ class Article {
     /**
      * @param Media $media
      */
-    public function setMedia(Media $media) {
+    public function setMedia($media) {
         $this->media = $media;
     }
 
     /**
      * @return string
      */
-    public function getTitle(): string {
+    public function getTitle(){
         return $this->title;
     }
 
     /**
      * @param string $title
      */
-    public function setTitle(string $title) {
+    public function setTitle($title) {
         $this->title = $title;
     }
 
     /**
      * @return string
      */
-    public function getSummary(): string {
+    public function getSummary(){
         return $this->summary;
     }
 
     /**
      * @param string $summary
      */
-    public function setSummary(string $summary) {
+    public function setSummary($summary) {
         $this->summary = $summary;
     }
 
     /**
      * @return string
      */
-    public function getContent(): string {
+    public function getContent() {
         return $this->content;
     }
 
     /**
      * @param string $content
      */
-    public function setContent(string $content) {
+    public function setContent($content) {
         $this->content = $content;
     }
 
     /**
      * @return int
      */
-    public function getHitcount(): int {
+    public function getHitcount() {
         return $this->hitcount;
     }
 
     /**
      * @param int $hitcount
      */
-    public function setHitcount(int $hitcount) {
+    public function setHitcount($hitcount) {
         $this->hitcount = $hitcount;
     }
 
     /**
      * @return date
      */
-    public function getCreatedAt(): date {
+    public function getCreatedAt() {
         return $this->created_at;
     }
 
     /**
      * @param date $created_at
      */
-    public function setCreatedAt(date $created_at) {
+    public function setCreatedAt($created_at) {
         $this->created_at = $created_at;
     }
 
     /**
      * @return date
      */
-    public function getUpdatedAt(): date {
+    public function getUpdatedAt() {
         return $this->updated_at;
     }
 
     /**
      * @param date $updated_at
      */
-    public function setUpdatedAt(date $updated_at) {
+    public function setUpdatedAt($updated_at) {
         $this->updated_at = $updated_at;
     }
 

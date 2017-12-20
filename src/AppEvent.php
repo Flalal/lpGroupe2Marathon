@@ -11,5 +11,7 @@ namespace App;
 
 class AppEvent
 {
-    const EDIT_ARTICLE = 'edit';
+    const EDIT_ARTICLE = 'app.article.edit';
+    const CREATE_ARTICLE = 'app.article.create';
+    const DELETE_ARTICLE = 'app.article.delete';
 }

@@ -19,8 +19,10 @@
                 <br>
                 {{ article.content }}
                 <br>
-                <a href="{{ path('app_article_edit', {'article' : article}) }}"> EDIT</a>
-                <br>
+                {% if app.user.admin == true %}
+                <a href="{{ path('app_article_edit', {'id' : article.id}) }}"> EDIT</a>
+                {% endif %}
+            <br>
                 <br>
 
             {% endfor %}
