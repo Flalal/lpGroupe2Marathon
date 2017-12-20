@@ -34,7 +34,20 @@ class ArticleController extends AbstractController
     public function edit(Request $request, EventDispatcher $eventDispatcher, Article $article)
     {
         $article = $this->getDoctrine()->getManager()->getRepository(Article::class)->find($article->getId());
-        $form = $this->createForm(ArticleType::class);
+        $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
+
+        if($form->isValid() && $form->isSubmitted()){
+            $userCardEvent = $this->get(ArticleEvent::class);
+            $userCardEvent->setUserCard($article);
+
+            $dispatcher = $this->get('event_dispatcher');
+            $dispatcher->dispatch(AppEvent::EDIT, $userCardEvent);
+
+
+            return $this->redirectToRoute('home_index');
+        }
+        return $this->render("UserCard/add.html.twig", ['form' => $form->createView(),]);
+
     }
 }
