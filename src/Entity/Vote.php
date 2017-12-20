@@ -49,42 +49,42 @@ class Vote
     /**
      * @return User
      */
-    public function getUser(): User {
+    public function getUser() {
         return $this->user;
     }
 
     /**
      * @param User $user
      */
-    public function setUser(User $user) {
+    public function setUser( $user) {
         $this->user = $user;
     }
 
     /**
      * @return Recipe
      */
-    public function getRecipe(): Recipe {
+    public function getRecipe() {
         return $this->recipe;
     }
 
     /**
      * @param Recipe $recipe
      */
-    public function setRecipe(Recipe $recipe) {
+    public function setRecipe( $recipe) {
         $this->recipe = $recipe;
     }
 
     /**
      * @return int
      */
-    public function getValue(): int {
+    public function getValue() {
         return $this->value;
     }
 
     /**
      * @param int $value
      */
-    public function setValue(int $value) {
+    public function setValue( $value) {
         $this->value = $value;
     }
 }

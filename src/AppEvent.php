@@ -13,4 +13,6 @@ final class AppEvent
     const DELETE_ARTICLE = 'app.article.delete';
 
     const COMMENT_ADD = "app.comment.add";
+
+    const VOTE_ADD = "app.vote.add";
 }
