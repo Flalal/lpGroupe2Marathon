@@ -36,7 +36,8 @@ class ArticleSubscriber implements EventSubscriberInterface
 
         $article = $articleEvent->getArticle();
         /** @var Article $article */
-        $article->setUser($this->token->getToken()->getUser());
+        $user = $this->token->getToken()->getUser();
+        $article->setUser($user);
         $this->em->persist($article);
         $this->em->flush();
     }
