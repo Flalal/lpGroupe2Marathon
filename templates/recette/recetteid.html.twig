@@ -21,8 +21,12 @@
             <h5>Commentaires</h5>
             {% for comment in comments %}
                 {{ comment.content }}</br>
-                Crée le :{{ comment.createdAt | date }} - Modification le : {{ comment.updatedAt | date }}
+                Crée le :{{ comment.createdAt | date }} - Modification le : {{ comment.updatedAt | date }}</br>
             {% endfor %}
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
 
         </div>
     </div>

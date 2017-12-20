@@ -11,7 +11,9 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Recipe;
 use App\AppEvent;
+use App\Event\CommentEvent;
 use App\Event\RecetteEvent;
+use App\Form\CommentType;
 use App\Form\RecetteType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,8 +32,9 @@ class RecetteController extends Controller
     public function showRecette(){
         $em = $this->getDoctrine()->getManager();
         $recettes = $em->getRepository(Recipe::class)->findAll();
-        return $this->render('recette/show.html.twig',['recettes'=>$recettes,]);
-
+        return $this->render('recette/show.html.twig',[
+            'recettes'=>$recettes,
+        ]);
     }
 
     /**
@@ -51,7 +54,9 @@ class RecetteController extends Controller
             $dispatcher->dispatch(AppEvent::RECETTE_ADD, $recetteEvent);
             return $this->redirectToRoute('app_recette_show');
         }
-        return $this->render("recette/add.html.twig", ['form' => $form->createView(),]);
+        return $this->render("recette/add.html.twig", [
+            'form' => $form->createView(),
+        ]);
     }
     /**
      * @Route("/edit/{id}" , name="app_recette_edit")
@@ -70,17 +75,37 @@ class RecetteController extends Controller
             $dispatcher->dispatch(AppEvent::RECETTE_EDIT, $recetteEvent);
             return $this->redirectToRoute('app_recette_show');
         }
-        return $this->render("recette/edit.html.twig", ['form' => $form->createView(),]);
+        return $this->render("recette/edit.html.twig", [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
      * @Route("/{id}", name="app_recette_recetteid")
      */
-    public function showRecetteId(Recipe $recette){
+    public function showRecetteId(Request $request, Recipe $recette){
+
         $em = $this->getDoctrine()->getManager();
-        $recette = $em->getRepository(Recipe::class)->findOneBy(['id'=>$recette->getId()]);
         $comments = $em->getRepository(Comment::class)->findBy(['recipe' => $recette->getId()]);
-        return $this->render('recette/recetteid.html.twig',['recette'=>$recette, 'comments' => $comments]);
+
+        $comment = $this->get(Comment::class);
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commentEvent = $this->get(CommentEvent::class);
+            /** @var CommentEvent $commentEvent */
+            $commentEvent->setComment($comment);
+            $commentEvent->setRecette($recette);
+            $dispatcher = $this->get('event_dispatcher');
+            $dispatcher->dispatch(AppEvent::COMMENT_ADD, $commentEvent);
+            return $this->redirectToRoute("app_recette_recetteid", ['id'=> $recette->getId()]);
+        }
+        return $this->render('recette/recetteid.html.twig',[
+            'recette'=>$recette,
+            'comments' => $comments,
+            'form' => $form->createView()
+        ]);
     }
 
 

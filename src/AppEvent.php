@@ -12,4 +12,5 @@ final class AppEvent
     const CREATE_ARTICLE = 'app.article.create';
     const DELETE_ARTICLE = 'app.article.delete';
 
+    const COMMENT_ADD = "app.comment.add";
 }
