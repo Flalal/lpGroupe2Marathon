@@ -21,9 +21,7 @@ class ArticleType extends AbstractType
             ->addEventListener(
                 FormEvents::PRE_SET_DATA,
                 array($this, 'onPreSetData')
-            )
-
-        ;
+            );
     }
 
     public function onPreSetData(FormEvent $event)
