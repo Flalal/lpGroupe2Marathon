@@ -28,11 +28,12 @@
         {% else %}
             <a href="{{ path('admin') }}">Admin</a>
         {% endif %}
-        <a href="{{ path('app_recette_show') }}">Recette</a>
+
         <a href="{{ path('logout') }}">Logout</a>
-        <a href="{{ path('app_article_show') }}">Article</a>
     {% else %}
         <a href="{{ path('login') }}">Login</a>
         <a href="{{ path('register') }}">Register</a>
     {% endif %}
+    <a href="{{ path('app_recette_show') }}">Recette</a>
+    <a href="{{ path('app_article_show') }}">Article</a>
 </div>

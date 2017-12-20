@@ -77,4 +77,13 @@ class ArticleController extends Controller
         return $this->render("article/edit.html.twig", ['form' => $form->createView(),]);
 
     }
+    /**
+     * @Route("/{id}", name="app_article_articleid")
+     */
+    public function showRecetteId(Article $article){
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository(Article::class)->findOneBy(['id'=>$article->getId()]);
+        return $this->render('article/articleid.html.twig',['article'=>$article, ]);
+    }
+
 }

@@ -1,0 +1,23 @@
+{% extends "laravel_like.html.twig" %}
+
+{% block body %}
+    <div class="flex-center position-ref full-height">
+        {% include 'navbar.html.twig' %}
+
+        <div class="content">
+            <h3> Article {{ article.id }}</h3>
+            <ul>
+                <li>Titre : {{ article.title }}</li>
+                <li>Sommaire : {{ article.summary }}</li>
+                <li>Contenu : {{ article.content }}</li>
+               {% if article.media != null %}
+                   <li>Media : {{ article.media.title }}</li>
+                   <li>Posté par : {{ article.user.name }}</li>
+               {% endif %}
+                <li>Vues : {{ article.hitcount }}</li>
+                <li>Crée le : {{ article.createdAt | date }}</li>
+                <li>Mis à jour le : {{ article.updatedAt | date }}</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

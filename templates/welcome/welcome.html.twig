@@ -14,12 +14,12 @@
             </div>
             <h3>*** Recettes ***</h3>
             {% for recette in recettes %}
-                Nom : {{ recette.name }} <a href="{{ path("app_recette_recetteId", {"id" :recette.id}) }}"><button>Affichage</button></a></br>
+                Nom : {{ recette.name }} <a href="{{ path("app_recette_recetteid", {"id" :recette.id}) }}"><button>Affichage</button></a></br>
             {% endfor %}
 
             <h3>*** Articles ***</h3>
             {% for article in articles %}
-                    Titre :{{ article.title }}{#<a href="{{ path("app_article_articleId", {"id" :article.id}) }}"><button>Affichage</button></a>#}</br>
+                    Titre :{{ article.title }}<a href="{{ path("app_article_articleid", {"id" :article.id}) }}"><button>Affichage</button></a></br>
             {% endfor %}
 
         </div>
