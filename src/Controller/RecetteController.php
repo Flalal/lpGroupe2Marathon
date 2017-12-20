@@ -74,13 +74,13 @@ class RecetteController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="app_recette_recetteId")
+     * @Route("/{id}", name="app_recette_recetteid")
      */
     public function showRecetteId(Recipe $recette){
         $em = $this->getDoctrine()->getManager();
         $recette = $em->getRepository(Recipe::class)->findOneBy(['id'=>$recette->getId()]);
         $comments = $em->getRepository(Comment::class)->findBy(['recipe' => $recette->getId()]);
-        return $this->render('recette/recetteId.html.twig',['recette'=>$recette, 'comments' => $comments]);
+        return $this->render('recette/recetteid.html.twig',['recette'=>$recette, 'comments' => $comments]);
     }
 
 
