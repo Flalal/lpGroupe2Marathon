@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 <div class="nav">
     <div id="logo">
         <a href="{{ path('welcome') }}"> <img src="./build/img/logo.png"></a>
     </div>
-
-    <div id="recette"><a href="{{ path('app_recette_show') }}">Recette</a></div>
-    <div id="article"><a href="{{ path('app_article_show') }}">Article</a></div>
 
     {% if app.user %}
         {% if app.user.isAdmin %}
@@ -18,10 +14,13 @@
         </div>
     {% else %}
         <div id="login">
-        <a href="{{ path('login') }}">Login</a>
-        <a href="{{ path('register') }}">Register</a>
+            <a href="{{ path('login') }}">Login</a>
+            <a href="{{ path('register') }}">Register</a>
         </div>
     {% endif %}
+
+    <div id="recette"><a href="{{ path('app_recette_show') }}">Recette</a></div>
+    <div id="article"><a href="{{ path('app_article_show') }}">Article</a></div>
 
 
     <div id="recherche_p">
