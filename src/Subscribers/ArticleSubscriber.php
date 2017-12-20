@@ -8,6 +8,8 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use App\AppEvent;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 
 class ArticleSubscriber implements EventSubscriberInterface
 {
@@ -31,6 +33,8 @@ class ArticleSubscriber implements EventSubscriberInterface
 
     public function create(ArticleEvent $articleEvent){
         $article = $articleEvent->getArticle();
+        /** @var Article $article */
+       // $article->setUser($this->token->getUser());
         $this->em->persist($article);
         $this->em->flush();
     }
