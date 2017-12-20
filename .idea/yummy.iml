@@ -4,23 +4,5 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="PHP" type="php">
-        <CLASSES>
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/components/bootstrap" />
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/components/bootstrap-default" />
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/components/jquery" />
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/composer" />
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/michelf/php-markdown" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/components/bootstrap" />
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/components/bootstrap-default" />
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/components/jquery" />
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/composer" />
-          <root url="file://$USER_HOME$/An15-16/CPA/code/TD11/vendor/michelf/php-markdown" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>
