@@ -45,5 +45,9 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
+<<<<<<< HEAD
         - { path: ^/recette/edit, roles: ROLE_ADMIN }
         - { path: ^/recette/add, roles: ROLE_ADMIN }
+=======
+        - { path: ^/article/edit/ , roles: ROLE_ADMIN }
+>>>>>>> dcd5d9087d2d3dabac9d405beb51b8fd5ff97556

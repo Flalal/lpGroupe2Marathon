@@ -1,0 +1,36 @@
+{% extends "laravel_like.html.twig" %}
+
+{% block body %}
+    <div class="flex-center position-ref full-height">
+        {% include 'navbar.html.twig' %}
+
+        <div class="content">
+            <div class="title m-b-md">
+                Article
+            </div>
+
+            {% for article in articles %}
+
+
+                {{ article.title }}
+                <br>
+                {{ article.summary }}
+
+                <br>
+                {{ article.content }}
+                <br>
+                {% if app.user.admin == true %}
+                <a href="{{ path('app_article_edit', {'id' : article.id}) }}"> EDIT</a>
+                {% endif %}
+            <br>
+                <br>
+
+            {% endfor %}
+
+
+            <div class="links">
+                <a href="http://www.iut-lens.univ-artois.fr">Marathon du Web</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

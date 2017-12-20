@@ -31,3 +31,5 @@ services:
         public: true
     App\Event\RecetteEvent:
         public: true
+    App\Event\ArticleEvent:
+        public: true
