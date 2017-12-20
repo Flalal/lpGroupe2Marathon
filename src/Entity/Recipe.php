@@ -111,98 +111,98 @@ class Recipe
     /**
      * @return Media
      */
-    public function getMedia(): Media {
+    public function getMedia() {
         return $this->media;
     }
 
     /**
      * @param Media $media
      */
-    public function setMedia(Media $media) {
+    public function setMedia( $media) {
         $this->media = $media;
     }
 
     /**
      * @return string
      */
-    public function getName(): string {
+    public function getName() {
         return $this->name;
     }
 
     /**
      * @param string $name
      */
-    public function setName(string $name) {
+    public function setName( $name) {
         $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getSteps(): string {
+    public function getSteps() {
         return $this->steps;
     }
 
     /**
      * @param string $steps
      */
-    public function setSteps(string $steps) {
+    public function setSteps( $steps) {
         $this->steps = $steps;
     }
 
     /**
      * @return Comment[]
      */
-    public function getComments(): ArrayCollection {
+    public function getComments() {
         return $this->comments;
     }
 
     /**
      * @param Comment[] $comments
      */
-    public function setComments(ArrayCollection $comments) {
+    public function setComments( $comments) {
         $this->comments = $comments;
     }
 
     /**
      * @return Vote[]
      */
-    public function getVotes(): ArrayCollection {
+    public function getVotes() {
         return $this->votes;
     }
 
     /**
      * @param Vote[] $votes
      */
-    public function setVotes(ArrayCollection $votes) {
+    public function setVotes( $votes) {
         $this->votes = $votes;
     }
 
     /**
      * @return string
      */
-    public function getIngredients(): string {
+    public function getIngredients() {
         return $this->ingredients;
     }
 
     /**
      * @param string $ingredients
      */
-    public function setIngredients(string $ingredients) {
+    public function setIngredients( $ingredients) {
         $this->ingredients = $ingredients;
     }
 
     /**
      * @return int
      */
-    public function getDifficulty(): int {
+    public function getDifficulty() {
         return $this->difficulty;
     }
 
     /**
      * @param int $difficulty
      */
-    public function setDifficulty(int $difficulty) {
+    public function setDifficulty( $difficulty) {
         $this->difficulty = $difficulty;
     }
 
@@ -237,56 +237,56 @@ class Recipe
     /**
      * @return string
      */
-    public function getMaterials(): string {
+    public function getMaterials() {
         return $this->materials;
     }
 
     /**
      * @param string $materials
      */
-    public function setMaterials(string $materials) {
+    public function setMaterials( $materials) {
         $this->materials = $materials;
     }
 
     /**
      * @return string
      */
-    public function getAstuce(): string {
+    public function getAstuce() {
         return $this->astuce;
     }
 
     /**
      * @param string $astuce
      */
-    public function setAstuce(string $astuce) {
+    public function setAstuce( $astuce) {
         $this->astuce = $astuce;
     }
 
     /**
      * @return date
      */
-    public function getCreatedAt(): date {
+    public function getCreatedAt() {
         return $this->created_at;
     }
 
     /**
      * @param date $created_at
      */
-    public function setCreatedAt(date $created_at) {
+    public function setCreatedAt( $created_at) {
         $this->created_at = $created_at;
     }
 
     /**
      * @return date
      */
-    public function getUpdatedAt(): date {
+    public function getUpdatedAt() {
         return $this->updated_at;
     }
 
     /**
      * @param date $updated_at
      */
-    public function setUpdatedAt(date $updated_at) {
+    public function setUpdatedAt( $updated_at) {
         $this->updated_at = $updated_at;
     }
 

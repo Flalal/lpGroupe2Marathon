@@ -1,0 +1,29 @@
+{% extends "laravel_like.html.twig" %}
+
+{% block body %}
+    <div class="flex-center position-ref full-height">
+        {% include 'navbar.html.twig' %}
+
+        <div class="content">
+            <h3> Recette {{ recette.id }}</h3>
+            <ul>
+                <li>Nom : {{ recette.name }}</li>
+                <li>Etapes : {{ recette.steps }}</li>
+                <li>Ingrédients : {{ recette.ingredients }}</li>
+                <li>Temps de préparation : {{ recette.preparationTime | date("H:i:s") }}</li>
+                <li>Temps de cuisson : {{ recette.cookingTime | date("H:i:s") }}</li>
+                <li>Matériels : {{ recette.materials }}</li>
+                <li>Astuce : {{ recette.astuce }}</li>
+                <li>Crée le : {{ recette.createdAt | date }}</li>
+                <li>Mise à jour le  : {{ recette.updatedAt | date}}</li></br>
+            </ul>
+
+            <h5>Commentaires</h5>
+            {% for comment in comments %}
+                {{ comment.content }}</br>
+                Crée le :{{ comment.createdAt | date }} - Modification le : {{ comment.updatedAt | date }}
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

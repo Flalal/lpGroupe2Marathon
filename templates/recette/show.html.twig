@@ -1,0 +1,31 @@
+{% extends "laravel_like.html.twig" %}
+
+{% block body %}
+    <div class="flex-center position-ref full-height">
+        {% include 'navbar.html.twig' %}
+
+        <div class="content">
+            <h1>~~~ Recettes ~~~</h1>
+            {% if app.user.admin == true %}
+                <a href="{{ path("app_recette_add")}}"><button>Ajouter</button></a>
+            {% endif %}
+            {% for recette in recettes %}
+                <h3>Recette {{ recette.id }}</h3>
+                <ul>
+                    <li>Nom : {{ recette.name }}</li>
+                    <li>Etapes : {{ recette.steps }}</li>
+                    <li>Ingrédients : {{ recette.ingredients }}</li>
+                    <li>Temps de préparation : {{ recette.preparationTime | date("H:i:s") }}</li>
+                    <li>Temps de cuisson : {{ recette.cookingTime | date("H:i:s") }}</li>
+                    <li>Matériels : {{ recette.materials }}</li>
+                    <li>Astuce : {{ recette.astuce }}</li>
+                    <li>Crée le : {{ recette.createdAt | date }}</li>
+                    <li>Mise à jour le  : {{ recette.updatedAt | date}}</li></br>
+                    {% if app.user.admin == true %}
+                        <a href="{{ path("app_recette_edit", {"id" : recette.id})}}"><button>Modifier</button></a>
+                    {% endif %}
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
