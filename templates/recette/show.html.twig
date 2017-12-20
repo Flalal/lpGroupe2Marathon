@@ -10,7 +10,7 @@
                 <a href="{{ path("app_recette_add")}}"><button>Ajouter</button></a>
             {% endif %}
             {% for recette in recettes %}
-                <h3>Recette {{ recette.id }}</h3>
+                <h3><a href="{{ path("app_recette_recetteid", {'id':recette.id}) }}">Recette {{ recette.id }}</a></h3>
                 <ul>
                     <li>Nom : {{ recette.name }}</li>
                     <li>Etapes : {{ recette.steps }}</li>
