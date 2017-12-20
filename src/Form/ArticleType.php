@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Media;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,7 +20,17 @@ class ArticleType extends AbstractType
             ->add('title')
             ->add('summary')
             ->add('content')
-            ->add('media', MediaType::class)
+            ->add(
+                'media',
+                EntityType::class,
+                [
+                    'class' => Media::class,
+                    'choice_label' => function (Media $media){
+                        return $media->getTitle() ." - " . $media->getType();
+                    },
+                    'multiple' => false,  // La modif de false par true change les box
+                    'expanded' => false,
+                ])
             ->addEventListener(
                 FormEvents::PRE_SET_DATA,
                 array($this, 'onPreSetData')
