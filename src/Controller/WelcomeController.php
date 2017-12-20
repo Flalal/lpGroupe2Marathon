@@ -17,7 +17,8 @@ class WelcomeController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $recettes = $em->getRepository(Recipe::class)->findAll();
-        $articles = $em->createQuery("select a from \App\Entity\Article a join a.user")->getResult();
+        $articles = $em->getRepository(Article::class)->findAll();
+        //$articles = $em->createQuery("select a from \App\Entity\Article a join a.user")->getResult();
         return $this->render('welcome/welcome.html.twig',['recettes'=>$recettes,'articles'=>$articles]);
     }
 }
