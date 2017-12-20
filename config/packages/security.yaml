@@ -46,3 +46,4 @@ security:
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/article/edit/ , roles: ROLE_ADMIN }
+        - { path: ^/article/creation/ , roles: ROLE_ADMIN }
