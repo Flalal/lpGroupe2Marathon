@@ -1,4 +1,27 @@
 <div class="top-right links">
+    <img src="../public/image/logo.png">
+    <li><a href="#">Recettes</a>
+        <!-- <ul>
+            <li><a href="#">Plats</a></li>
+            <li><a href="#">Desserts</a></li>
+            <li><a href="#">Boissons</a></li>
+            <li><a href="#">Vegan</a></li>
+            <li><a href="#">Free Gluten</a></li>
+        </ul> -->
+    </li>
+    <li>
+        <a href="">Article</a>
+    </li>
+    <li>
+        <a href="">Déposer une recette</a>
+    </li>
+    <div class="recherche_p">
+        <form action="/search" id="searchthis" method="get">
+            <input id="search" name="q" type="text" placeholder="Rechercher" />
+            <input id="search-btn" type="submit" value="Rechercher" />
+        </form>
+
+    </div>
     {% if app.user %}
         {% if not app.user.isAdmin %}
             <a href="{{ path('welcome') }}">Home</a>
