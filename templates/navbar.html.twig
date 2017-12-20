@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="nav">
     <div id="logo">
         <a href="{{ path('welcome') }}"> <img src="./build/img/logo.png"></a>
@@ -14,16 +15,21 @@
         {% endif %}
         <div id="log">
             <a href="{{ path('logout') }}">Logout</a>
+
     {% else %}
         <a href="{{ path('login') }}">Login</a>
         <a href="{{ path('register') }}">Register</a>
         </div>
     {% endif %}
+
+
     <div id="recherche_p">
         <form action="/search" id="searchthis" method="get">
-            <input id="search" name="q" type="text" placeholder="Rechercher" />
+            <input id="search" name="q" type="text" placeholder="Rechercher"/>
             <input id="search-btn" type="submit" value="Rechercher" />
         </form>
+
     </div>
+
 </div>
-#barre
+<div id="barre"></div>
