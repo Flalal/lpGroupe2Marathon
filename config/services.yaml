@@ -29,6 +29,17 @@ services:
 
     App\Entity\Recipe:
         public: true
+
+    App\Entity\Comment:
+        public: true
+    App\Comment\formulaireComment:
+        public: true
+    App\Event\CommentEvent:
+        public: true
+    App\Subscribers\CommentSubscriber:
+        public: true
+
+
     App\Event\RecetteEvent:
         public: true
     App\Event\ArticleEvent:
