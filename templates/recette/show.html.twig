@@ -28,6 +28,7 @@
                     {% if nbComments is defined %}
                         <h5>Nombre de commentaires : {{ nbComments[recette.id] }}</h5>
                     {% endif %}
+                {% if app.user %}
                     {% if app.user.admin == true %}
                         <a href="{{ path("app_recette_edit", {"id" : recette.id})}}"><button>Modifier</button></a>
                     {% endif %}
