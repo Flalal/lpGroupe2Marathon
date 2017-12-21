@@ -15,7 +15,7 @@
             {% for article in articles %}
 
                 <div class="article">
-                    <img src="{{ articleid.media.path }}">
+                    <img src="{{ article.media.path }}">
                     <h2><a href="{{ path("app_article_articleid", {'id':article.id}) }}">Articles {{ article.id }} {{ article.title }}</a></h2>
                     <p>{{ article.summary }}</p>
                     {{ article.hitcount }}
