@@ -78,7 +78,7 @@ body{
 
 .form-wrapper input {
     width: calc(100% - 120px);
-    height: 20px;
+    height: auto!important;
     padding: 10px 5px;
     float: left;
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
