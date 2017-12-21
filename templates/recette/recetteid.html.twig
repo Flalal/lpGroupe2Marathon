@@ -21,6 +21,8 @@
             {{ form_widget(form) }}
             {{ form_end(form) }}
 
+            <b>Moyenne vote : {{ moyenne }}</b>
+
             <h5>Commentaires</h5>
             {% for comment in comments %}
                 {{ comment.content }}</br>
