@@ -1,4 +1,4 @@
-{% extends "laravel_like.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block body %}
     <div class="flex-center position-ref full-height">
@@ -18,6 +18,11 @@
                 <li>Crée le : {{ article.createdAt | date }}</li>
                 <li>Mis à jour le : {{ article.updatedAt | date }}</li>
             </ul>
+            {% if app.user %}
+                {% if app.user.admin %}
+                    <a href="{{ path('app_article_delete', {'id' : article.id}) }}">DELETE</a>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -1,8 +1,6 @@
-{% extends "laravel_like.html.twig" %}
-
+{% extends "base.html.twig" %}
 {% block body %}
     <div class="flex-center position-ref full-height">
-        {% include 'navbar.html.twig' %}
 
         <div class="content">
             <h3> Recette {{ recette.id }}</h3>
@@ -21,6 +19,8 @@
             {{ form_widget(form) }}
             {{ form_end(form) }}
 
+            <b>Moyenne vote : {{ moyenne }}</b>
+
             <h5>Commentaires</h5>
             {% for comment in comments %}
                 {{ comment.content }}</br>
@@ -30,7 +30,12 @@
             {{ form_start(form2) }}
             {{ form_widget(form2) }}
             {{ form_end(form2) }}
-
+            <br>
+            {% if app.user %}
+                {% if app.user.admin %}
+                    <a href="{{ path('app_recette_delete', {'id' : recette.id}) }}">DELETE</a>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
