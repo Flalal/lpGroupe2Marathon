@@ -46,7 +46,10 @@ class RecetteSubscribers implements EventSubscriberInterface
 
     public function recetteDelete(RecetteEvent $recetteEvent){
         $recette = $recetteEvent->getRecette();
-        $this->em->persist($recette);
+
+
+        //Delete vote et comments
+        $this->em->remove($recette);
         $this->em->flush();
     }
 

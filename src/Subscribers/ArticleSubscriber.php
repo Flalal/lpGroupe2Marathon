@@ -25,9 +25,9 @@ class ArticleSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-          AppEvent::EDIT_ARTICLE => 'edit',
-          AppEvent::CREATE_ARTICLE => 'create',
-          AppEvent::DELETE_ARTICLE => 'delete',
+          AppEvent::ARTICLE_EDIT => 'edit',
+          AppEvent::ARTICLE_CREATE => 'create',
+          AppEvent::ARTICLE_DELETE => 'delete',
         ];
 
     }
@@ -52,7 +52,7 @@ class ArticleSubscriber implements EventSubscriberInterface
     public function delete(ArticleEvent $articleEvent){
         $article = $articleEvent->getArticle();
         $this->em->remove($article);
-
+        $this->em->flush();
     }
 
 }

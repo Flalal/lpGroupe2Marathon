@@ -18,6 +18,11 @@
                 <li>Crée le : {{ article.createdAt | date }}</li>
                 <li>Mis à jour le : {{ article.updatedAt | date }}</li>
             </ul>
+            {% if app.user %}
+                {% if app.user.admin %}
+                    <a href="{{ path('app_article_delete', {'id' : article.id}) }}">DELETE</a>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

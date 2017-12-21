@@ -87,7 +87,6 @@ class RecetteController extends Controller
      * @Route("/{id}", name="app_recette_recetteid")
      */
     public function showRecetteId(Request $request, Recipe $recette){
-
         $em = $this->getDoctrine()->getManager();
         $comments = $em->getRepository(Comment::class)->findBy(['recipe' => $recette->getId()]);
 
@@ -118,14 +117,39 @@ class RecetteController extends Controller
             $dispatcher->dispatch(AppEvent::COMMENT_ADD, $commentEvent);
             return $this->redirectToRoute("app_recette_recetteid", ['id'=> $recette->getId()]);
         }
+        /**@var \App\Vote\calculeVote $moyenne */
+        $moyenne = $this->get(\App\Vote\calculeVote::class);
+        $resultat = $moyenne->moyenVote($recette);
         return $this->render('recette/recetteid.html.twig',[
             'recette'=>$recette,
             'comments' => $comments,
             'form' => $form->createView(),
             'form2' => $form2->createView(),
+            'moyenne' => $resultat,
         ]);
     }
 
+    /**
+     * @Route("/show/{option}", name="app_recette_tri", defaults={"option"="id"})
+     */
+    public function showTri($option){
+        $em = $this->getDoctrine()->getManager();
+        $recipes = $em->getRepository(Recipe::class)->findBy([],[$option => "DESC"]);
+        return $this->render('recette/show.html.twig',['recettes'=>$recipes, ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="app_recette_delete")
+     */
+    public function delete(Recipe $recipe){
+        $recetteEvent = $this->get(RecetteEvent::class);
+        /** @var RecetteEvent $recetteEvent */
+        $recetteEvent->setRecette($recipe);
 
 
+        $dispatcher = $this->get('event_dispatcher');
+        $dispatcher->dispatch(AppEvent::RECETTE_DELETE, $recetteEvent);
+
+        return $this->redirectToRoute('app_recette_show');
+    }
 }
