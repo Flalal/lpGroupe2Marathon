@@ -10,7 +10,8 @@
                 <li>Sommaire : {{ article.summary }}</li>
                 <li>Contenu : {{ article.content }}</li>
                {% if article.media != null %}
-                   <li>Media : {{ article.media.title }}</li>
+                   <li>Media : {{ article.media.path }}</li>
+                   <li><img src="{{ article.media.path }}"></li>
                    <li>Posté par : {{ article.user.name }}</li>
                {% endif %}
                 <li>Vues : {{ article.hitcount }}</li>
@@ -19,7 +20,7 @@
             </ul>
             {% if app.user %}
                 {% if app.user.admin %}
-                    <a href="{{ path('app_article_delete', {'id' : article.id}) }}">DELETE</a>
+                    <a href="{{ path('app_article_edit', {'id' : article.id}) }}">MODIF</a>
                 {% endif %}
             {% endif %}
         </div>

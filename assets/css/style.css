@@ -1,21 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Pangolin');
+
 body{
     margin: 0!important;
 }
 
 #nav{
     align-items: center;
-    height: 20vh;
+    height: auto;
     background-color: #f8f8f8;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     font-family: 'Nunito', sans-serif;
-    color: #223a5d;
 }
 
 #nav a{
-    color: #000;
+    color: #223a5d;
     text-decoration: none;
-    font-family: Calibri;
+    font-family: 'Pangolin', cursive;
+    padding-top: 34%;
 }
 
 #logo{
@@ -26,53 +29,149 @@ body{
 #admin{
     grid-column: 7/8;
     grid-row: 1/1;
-    padding-top: 34%;
 }
 
 #recette{
     grid-column: 3/4;
     grid-row: 1/1;
-    padding-top: 34%;
 }
 
 #article{
     grid-column: 4/5;
     grid-row: 1/1;
-    padding-top: 34%;
 }
 
 #depo-recette{
     grid-column: 5/6;
     grid-row: 1/1;
-    padding-top: 34%;
 }
 
 #depo-article{
     grid-column: 6/7;
     grid-row: 1/1;
-    padding-top: 34%;
 }
 
 #log{
     grid-column: 9/10;
     grid-row: 1/1;
-    padding-top: 34%;
 }
 
 #login{
     grid-column: 9/10;
     grid-row: 1/1;
-    padding-top: 34%;
 }
 
 #recherche_p{
     grid-row: 2/2;
-    grid-column: 2/-1;
+    grid-column: 3/-1;
     align-self: baseline;
+}
+
+.form-wrapper {
+    width: 80%;
+}
+
+.form-wrapper input {
+    width: calc(100% - 120px);
+    height: 20px;
+    padding: 10px 5px;
+    float: left;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: #fff;
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+    -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+.form-wrapper input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background: #eb5533;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}
+
+.form-wrapper button:hover{
+    background: #eb5533;
+}
+
+.form-wrapper button:active,
+.form-wrapper button:focus{
+    background: #eb5533;
+}
+
+.form-wrapper button:before {
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #eb5533 transparent;
+    top: 12px;
+    left: -6px;
+}
+
+.form-wrapper button:hover:before{
+    border-right-color: #eb5533;
+}
+
+.form-wrapper button:focus:before{
+    border-right-color: #eb5533;
+}
+
+.form-wrapper button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
 }
 
 #barre{
     height: 10px;
     width: 100%;
     background-color: #f5d057;
+}
+
+@media screen and (max-device-width : 500px){
+    #nav {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-row: repeat(9, 1fr);
+    }
+
 }

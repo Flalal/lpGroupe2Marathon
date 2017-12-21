@@ -15,12 +15,14 @@
                 <li>Crée le : {{ recette.createdAt | date }}</li>
                 <li>Mise à jour le  : {{ recette.updatedAt | date}}</li></br>
             </ul>
+            {% if app.user %}
             {{ form_start(form) }}
             {{ form_widget(form) }}
             {{ form_end(form) }}
-
+            {% endif %}
             <b>Moyenne vote : {{ moyenne }}</b>
 
+            {% if app.user %}
             <h5>Commentaires</h5>
             {% for comment in comments %}
                 {{ comment.content }}</br>

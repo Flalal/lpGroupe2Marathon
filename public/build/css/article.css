@@ -1,0 +1,19 @@
+.grid{
+    display: grid;
+    grid-template-columns: 30vw 30vw 30vw;
+    grid-column-gap: 2vw;
+    grid-row-gap: 4vh;
+    grid-auto-rows: auto;
+    justify-content: center;
+}
+.grid .article{
+    background-color: blue;
+}
+
+.grid .article > h2{
+    background-color: red;
+}
+
+.grid .article > p{
+    font-style: italic;
+}
