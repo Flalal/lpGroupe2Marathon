@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Pangolin');
 
 body{
     margin: 0!important;
@@ -6,7 +7,7 @@ body{
 
 #nav{
     align-items: center;
-    height: 20vh;
+    height: auto;
     background-color: #f8f8f8;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -16,7 +17,7 @@ body{
 #nav a{
     color: #223a5d;
     text-decoration: none;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Pangolin', cursive;
 }
 
 #logo{
