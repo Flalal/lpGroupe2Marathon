@@ -27,7 +27,6 @@ class ArticleSubscriber implements EventSubscriberInterface
         return [
           AppEvent::ARTICLE_EDIT => 'edit',
           AppEvent::ARTICLE_CREATE => 'create',
-          AppEvent::ARTICLE_DELETE => 'delete',
         ];
 
     }
