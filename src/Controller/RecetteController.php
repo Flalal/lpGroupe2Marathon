@@ -30,11 +30,40 @@ use Symfony\Component\Routing\Annotation\Route;
 class RecetteController extends Controller
 {
     /**
-     * @Route("/", name="app_recette_show")
+     * @Route("/show/{option}", name="app_recette_show", defaults={"option"="id"})
      */
-    public function showRecette(){
+    public function showRecette(Request $request, $option){
         $em = $this->getDoctrine()->getManager();
         $recettes = $em->getRepository(Recipe::class)->findAll();
+        if($option == "note"){
+            $requete = $em->createQuery("SELECT r, avg(v.value) AS moyenne FROM App\Entity\Recipe r JOIN r.votes v GROUP BY r.id ORDER BY moyenne DESC");
+            $moyenne = $requete->getResult();
+            $recettes =[];
+            $lesMoyennes = [];
+            foreach ($moyenne as $elt) {
+                $recettes[] = $elt[0];
+                $lesMoyennes[$elt[0]->getId()] = $elt['moyenne'];
+            }
+            return $this->render('recette/show.html.twig',[
+                'recettes'=>$recettes,
+                'moyennes' => $lesMoyennes,
+            ]);
+        }
+
+        if($option == "comments"){
+            $requete = $em->createQuery("SELECT r, count(c.id) AS nbComment FROM App\Entity\Recipe r JOIN r.comments c GROUP BY r.id ORDER BY nbComment DESC");
+            $nbComments = $requete->getResult();
+            $recettes =[];
+            $lesComments = [];
+            foreach ($nbComments as $elt) {
+                $recettes[] = $elt[0];
+                $lesComments[$elt[0]->getId()] = $elt['nbComment'];
+            }
+            return $this->render('recette/show.html.twig',[
+                'recettes'=>$recettes,
+                'nbComments' => $lesComments,
+            ]);
+        }
         return $this->render('recette/show.html.twig',[
             'recettes'=>$recettes,
         ]);
@@ -128,16 +157,6 @@ class RecetteController extends Controller
             'moyenne' => $resultat,
         ]);
     }
-
-    /**
-     * @Route("/show/{option}", name="app_recette_tri", defaults={"option"="id"})
-     */
-    public function showTri($option){
-        $em = $this->getDoctrine()->getManager();
-        $recipes = $em->getRepository(Recipe::class)->findBy([],[$option => "DESC"]);
-        return $this->render('recette/show.html.twig',['recettes'=>$recipes, ]);
-    }
-
     /**
      * @Route("/delete/{id}", name="app_recette_delete")
      */
