@@ -12,28 +12,28 @@
 
             <div class="grid">
 
-            {% for article in articles %}
+                {% for article in articles %}
 
                 <div class="article">
-                    <img src="{{ article.media.path }}">
-                    <h2><a href="{{ path("app_article_articleid", {'id':article.id}) }}">Articles {{ article.id }} {{ article.title }}</a></h2>
-                    <p>{{ article.summary }}</p>
-                    {{ article.hitcount }}
-                    {% if app.user != null %}
-                        {% if app.user.admin == true %}
-                            <a href="{{ path('app_article_edit', {'id' : article.id}) }}"> EDIT</a>
-                        {% endif %}
+                    <div class"imgarticle" style="background-image:url("{{ article.media.path }}")"></div>
+                <h2><a href="{{ path("app_article_articleid", {'id':article.id}) }}">{{ article.title }}</a></h2>
+                <p>{{ article.summary }}</p>
+                {{ article.hitcount }}
+                {% if app.user != null %}
+                    {% if app.user.admin == true %}
+                        <a href="{{ path('app_article_edit', {'id' : article.id}) }}"> EDIT</a>
                     {% endif %}
-                </div>
+                {% endif %}
+            </div>
 
             {% endfor %}
 
-            </div>
-
-
-            <div class="links">
-                <a href="http://www.iut-lens.univ-artois.fr">Marathon du Web</a>
-            </div>
         </div>
+
+
+        <div class="links">
+            <a href="http://www.iut-lens.univ-artois.fr">Marathon du Web</a>
+        </div>
+    </div>
     </div>
 {% endblock %}
