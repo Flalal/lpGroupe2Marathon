@@ -9,6 +9,8 @@
                 Article
             </div>
 
+            <a href="{{ path('app_article_tri', { "option" : "hitcount" }) }}"></a>
+
             {% for article in articles %}
 
                 <h3><a href="{{ path("app_article_articleid", {'id':article.id}) }}">Articles {{ article.id }}</a></h3>
