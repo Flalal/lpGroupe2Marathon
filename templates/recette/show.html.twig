@@ -3,7 +3,7 @@
     <div class="flex-center position-ref full-height">
 
         <div class="content">
-            <a href="{{ path('app_recette_tri', { "option" : "comment" }) }}"></a>
+
             <h1>~~~ Recettes ~~~</h1>
             {% if app.user.admin == true %}
                 <a href="{{ path("app_recette_add")}}"><button>Ajouter</button></a>
@@ -20,11 +20,20 @@
                     <li>Astuce : {{ recette.astuce }}</li>
                     <li>Crée le : {{ recette.createdAt | date }}</li>
                     <li>Mise à jour le  : {{ recette.updatedAt | date}}</li></br>
+                    {% if moyennes is defined %}
+                        <h5>Moyenne : {{ moyennes[recette.id] | round(2) }}/5</h5>
+                    {% endif %}
+                    {% if nbComments is defined %}
+                        <h5>Nombre de commentaires : {{ nbComments[recette.id] }}</h5>
+                    {% endif %}
                     {% if app.user.admin == true %}
                         <a href="{{ path("app_recette_edit", {"id" : recette.id})}}"><button>Modifier</button></a>
                     {% endif %}
                 </ul>
             {% endfor %}
+            <a href="{{ path('app_recette_show', { "option" : "note" }) }}"><button>Trier par note</button></a>
+            <a href="{{ path('app_recette_show', { "option" : "comments" }) }}"><button>Trier par commentaire</button></a>
+
         </div>
     </div>
 {% endblock %}
