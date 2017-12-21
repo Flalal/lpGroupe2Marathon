@@ -16,6 +16,6 @@ final class AppEvent
     const COMMENT_DELETE = "app.comment.delete";
     const COMMENT_EDIT = "app.comment.edit";
 
-    const VOTE_ADD = "app.vote.add"
+    const VOTE_ADD = "app.vote.add";
     const VOTE_DELETE = "app.vote.delete";
 }
