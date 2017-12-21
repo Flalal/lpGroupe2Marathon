@@ -8,13 +8,14 @@
 
             <link rel="stylesheet" type="text/css" href="{{ asset('build/css/bootstrap.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('build/css/article.css') }}">
-            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/accueil.css') }}">{% endblock %}
-        {% block javascript %}
-  
-                '@build/js/jquery.js'
-                '@build/js/bootstrap.bundle.js'
-  
+
+            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/accueil.css') }}">
         {% endblock %}
+        {% block javascripts %}
+            <script src="build/js/jquery.js"></script>
+            <script src="build/js/bootstrap.bundle.js"></script>
+        {% endblock %}
+
     </head>
     <body>
         {% include 'navbar.html.twig' %}
