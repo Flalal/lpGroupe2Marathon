@@ -186,7 +186,7 @@ body{
     #nav-mob{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(9, 1fr);
+        grid-template-rows: repeat(6, 1fr);
     }
     #logo{
         grid-column: 1/2;
@@ -194,37 +194,37 @@ body{
     }
 
     #admin{
-        grid-row: 7/8;
-        grid-column: 2/2;
-    }
-
-    #recette{
-        grid-row: 3/4;
-        grid-column: 2/2;
-    }
-
-    #article{
-        grid-row: 4/5;
-        grid-column: 2/2;
-    }
-
-    #depo-recette{
         grid-row: 5/6;
         grid-column: 2/2;
     }
 
+    #recette{
+        grid-row: 1/2;
+        grid-column: 2/2;
+    }
+
+    #article{
+        grid-row: 2/3;
+        grid-column: 2/2;
+    }
+
+    #depo-recette{
+        grid-row: 3/4;
+        grid-column: 2/2;
+    }
+
     #depo-article{
-        grid-row: 6/7;
+        grid-row: 4/5;
         grid-column: 2/2;
     }
 
     #log{
-        grid-row: 9/10;
+        grid-row: 6/7;
         grid-column: 2/2;
     }
 
     #login{
-        grid-row: 9/10;
+        grid-row: 3/4;
         grid-column: 2/2;
     }
 
