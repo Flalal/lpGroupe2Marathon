@@ -26,7 +26,11 @@ class calculeVote
         foreach ($votes as $vote){
             $somme+= $vote->getValue();
         }
-        return round($somme/count($votes),2);
+        if(count($votes) == 0){
+            return 0;
+        } else {
+            return round($somme/count($votes),2);
+        }
 
     }
 }
