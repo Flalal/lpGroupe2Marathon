@@ -20,7 +20,7 @@
             </ul>
             {% if app.user %}
                 {% if app.user.admin %}
-                    <a href="{{ path('app_article_edit', {'id' : article.id}) }}">MODIF</a>
+                    <a href="{{ path('app_article_edit', {'id' : article.id}) }}"><button>Modifier</button></a>
                 {% endif %}
             {% endif %}
         </div>

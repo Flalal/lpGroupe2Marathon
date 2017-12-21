@@ -45,10 +45,10 @@ class ArticleType extends AbstractType
         /** @var Article $article */
         if($article!==null) {
             if ($article->getId() !== null) {
-                $form->add('register', SubmitType::class, ['label' => 'Register']);
+                $form->add('register', SubmitType::class, ['label' => 'Valider']);
             }
         }else {
-            $form->add('modif', SubmitType::class, ['label' => 'Modif']);
+            $form->add('modif', SubmitType::class, ['label' => 'Ajouter']);
         }
 
     }
