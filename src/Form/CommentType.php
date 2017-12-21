@@ -24,7 +24,7 @@ class CommentType extends AbstractType
     {
         $builder
             ->add("content", TextareaType::class,[
-                "label" => "Commenter"
+                "label" => " "
             ])
             ->addEventListener(
                 FormEvents::PRE_SET_DATA,
@@ -44,7 +44,7 @@ class CommentType extends AbstractType
         $form = $event->getForm();
 
 
-        $form->add('submit',SubmitType::class);
+        $form->add('Commenter',SubmitType::class);
 
     }
 

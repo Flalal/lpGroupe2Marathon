@@ -62,7 +62,7 @@ class RecetteType extends AbstractType
 
         if ($recette->getId() !== null) {
         }
-        $form->add('submit',SubmitType::class);
+        $form->add('Ajouter',SubmitType::class);
 
     }
 

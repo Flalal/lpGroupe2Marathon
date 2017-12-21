@@ -26,12 +26,12 @@ class VoteType extends AbstractType
         $builder
             ->add("value",ChoiceType::class,
                 array(
-                    "label"=>"Voter",
+                    "label" => " ",
         'choices' => $choices,
         'expanded' => true,
         'multiple' => false
     ))
-            ->add("submit", SubmitType::class);
+            ->add("Voter", SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
