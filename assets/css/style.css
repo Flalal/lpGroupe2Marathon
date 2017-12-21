@@ -9,13 +9,12 @@ body{
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     font-family: 'Nunito', sans-serif;
-    color: #223a5d;
 }
 
 #nav a{
-    color: #000;
+    color: #223a5d;
     text-decoration: none;
-    font-family: Calibri;
+    font-family: 'Nunito', sans-serif;
 }
 
 #logo{
