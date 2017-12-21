@@ -4,11 +4,12 @@ body{
 
 #nav{
     align-items: center;
-    height: 16vh;
+    height: 20vh;
     background-color: #f8f8f8;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     font-family: 'Nunito', sans-serif;
+    color: #223a5d;
 }
 
 #nav a{
