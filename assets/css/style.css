@@ -71,11 +71,11 @@ body{
 }
 
 .form-wrapper {
-    width: 450px;
+    width: 80%;
 }
 
 .form-wrapper input {
-    width: 330px;
+    width: calc(100% - 120px);
     height: 20px;
     padding: 10px 5px;
     float: left;
