@@ -11,15 +11,8 @@
             <div class="links">
                 <a href="http://www.iut-lens.univ-artois.fr">Marathon du Web</a>
             </div>
-            <h3>*** Recettes ***</h3>
-            {% for recette in recettes %}
-                Nom : {{ recette.name }} <a href="{{ path("app_recette_recetteid", {"id" :recette.id}) }}"><button>Affichage</button></a></br>
-            {% endfor %}
 
-            <h3>*** Articles ***</h3>
-            {% for article in articles %}
-                    Titre :{{ article.title }}<a href="{{ path("app_article_articleid", {"id" :article.id}) }}"><button>Affichage</button></a></br>
-            {% endfor %}
+
 
         </div>
     </div>
@@ -41,23 +34,18 @@
                 </div>
             </div>
 
+
+            {% for article in articles %}
             <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+            <div class="carousel-item" style="background-image: url('{{ article.media.path }}')">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Second Slide</h3>
-                    <p>This is a description for the second slide.</p>
-                    <a href="#" target="_blank"> <input type="button" value="" class="bouton"></a>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.content| truncate(40, false, '...') }}</p>
+                    <a href="{{ path("app_article_articleid", {"id" : article.id}) }}" target="_blank"> <input type="button" value="En savoir plus !" class="bouton"></a>
                 </div>
             </div>
 
-            <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Third Slide</h3>
-                    <p>This is a description for the third slide.</p>
-                    <a href="#" target="_blank"> <input type="button" value="" class="bouton"></a>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
 
@@ -109,42 +97,20 @@
 
     <div class="row">
 
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">1</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-                </div>
-            </div>
-        </div>
+        {% for recette in recettes %}
 
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="{{ recette.media.path }}" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">2</a>
+                        <a href="{{  path("app_recette_recetteid", {"id" :recette.id}) }}"> {{ recette.name }}</a>
                     </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                    <p class="card-text">{{ recette.steps| truncate(100, false, '...') }}</p>
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">3</a>
-                    </h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-                </div>
-
-            </div>
-        </div>
+        {% endfor %}
 
     </div>
 

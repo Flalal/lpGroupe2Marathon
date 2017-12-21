@@ -47,7 +47,7 @@ class ArticleController extends Controller
             $dispatcher->dispatch(AppEvent::ARTICLE_EDIT, $articleEvent);
 
 
-            return $this->redirectToRoute('welcome');
+            return $this->redirectToRoute('app_article_show');
         }
         return $this->render("article/edit.html.twig", ['form' => $form->createView(),]);
 
