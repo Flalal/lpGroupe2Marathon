@@ -22,7 +22,6 @@ class RecetteSubscribers implements EventSubscriberInterface
         return array(
             AppEvent::RECETTE_ADD => 'recetteAdd',
             AppEvent::RECETTE_EDIT => 'recetteEdit',
-            AppEvent::RECETTE_DELETE=> 'recetteDelete'
         );
     }
 
