@@ -7,7 +7,7 @@ body{
 
 #nav{
     align-items: center;
-    height: 20vh;
+    height: auto;
     background-color: #f8f8f8;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
