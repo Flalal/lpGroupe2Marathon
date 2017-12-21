@@ -33,6 +33,8 @@
             {% endfor %}
             <a href="{{ path('app_recette_show', { "option" : "note" }) }}"><button>Trier par note</button></a>
             <a href="{{ path('app_recette_show', { "option" : "comments" }) }}"><button>Trier par commentaire</button></a>
+            <a href="{{ path('app_recette_show', { "option" : "id" }) }}"><button>Trier croissant</button></a>
+            <a href="{{ path('app_recette_show', { "option" : "decroissant" }) }}"><button>Trier decroissant</button></a>
 
         </div>
     </div>
