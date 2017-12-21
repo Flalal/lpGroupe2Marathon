@@ -18,7 +18,7 @@
                     <div class"imgarticle" style="background-image:url("{{ article.media.path }}")"></div>
                 <h2><a href="{{ path("app_article_articleid", {'id':article.id}) }}">{{ article.title }}</a></h2>
                 <p>{{ article.summary }}</p>
-                {{ article.hitcount }}
+                {{ article.hitcount }} vues
                 {% if app.user != null %}
                     {% if app.user.admin == true %}
                         <a href="{{ path('app_article_edit', {'id' : article.id}) }}"> EDIT</a>
