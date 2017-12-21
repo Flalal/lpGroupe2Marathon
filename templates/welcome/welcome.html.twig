@@ -13,10 +13,6 @@
             </div>
 
 
-            <h3>*** Articles ***</h3>
-            {% for article in articles %}
-                    Titre :{{ article.title }}<a href="{{ path("app_article_articleid", {"id" :article.id}) }}"><button>Affichage</button></a></br>
-            {% endfor %}
 
         </div>
     </div>
@@ -38,23 +34,18 @@
                 </div>
             </div>
 
+
+            {% for article in articles %}
             <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+            <div class="carousel-item" style="background-image: url('{{ article.media.path }}')">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Second Slide</h3>
-                    <p>This is a description for the second slide.</p>
-                    <a href="#" target="_blank"> <input type="button" value="" class="bouton"></a>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.content| truncate(40, false, '...') }}</p>
+                    <a href="{{ path("app_article_articleid", {"id" : article.id}) }}" target="_blank"> <input type="button" value="" class="bouton"></a>
                 </div>
             </div>
 
-            <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Third Slide</h3>
-                    <p>This is a description for the third slide.</p>
-                    <a href="#" target="_blank"> <input type="button" value="" class="bouton"></a>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
 
