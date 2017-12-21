@@ -5,8 +5,10 @@
         <div class="content">
 
             <h1>~~~ Recettes ~~~</h1>
-            {% if app.user.admin == true %}
-                <a href="{{ path("app_recette_add")}}"><button>Ajouter</button></a>
+            {% if app.user %}
+                {% if app.user.admin %}
+                  <a href="{{ path("app_recette_add")}}"><button>Ajouter</button></a>
+                {% endif %}
             {% endif %}
             {% for recette in recettes %}
                 <h3><a href="{{ path("app_recette_recetteid", {'id':recette.id}) }}">Recette {{ recette.id }}</a></h3>
@@ -39,5 +41,3 @@
         </div>
     </div>
 {% endblock %}
-
-{% extends "footer.html.twig" %}
