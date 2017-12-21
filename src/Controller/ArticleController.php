@@ -89,4 +89,13 @@ class ArticleController extends Controller
         return $this->render('article/articleid.html.twig',['article'=>$article, ]);
     }
 
+    /**
+     * @Route("/show/{option}", name="app_article_tri", defaults={"option"="id"})
+     */
+    public function showTri($option){
+        $em = $this->getDoctrine()->getManager();
+        $articles = $em->getRepository(Article::class)->findBy([],[$option => "DESC"]);
+        return $this->render('article/show.html.twig',['articles'=>$articles, ]);
+    }
+
 }
