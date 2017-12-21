@@ -11,7 +11,7 @@
                 <li>Contenu : {{ article.content }}</li>
                {% if article.media != null %}
                    <li>Media : {{ article.media.path }}</li>
-                   <li><img src="{{ path(article.media.path) }}"></li>
+                   <li><img src="{{ article.media.path }}"></li>
                    <li>Posté par : {{ article.user.name }}</li>
                {% endif %}
                 <li>Vues : {{ article.hitcount }}</li>
