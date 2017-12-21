@@ -10,27 +10,24 @@
 
             <a href="{{ path('app_article_tri', { "option" : "hitcount" }) }}"></a>
 
+            <div class="grid">
+
             {% for article in articles %}
 
-                <h3><a href="{{ path("app_article_articleid", {'id':article.id}) }}">Articles {{ article.id }}</a></h3>
-                {{ article.title }}
-                <br>
-                {{ article.summary }}
-
-                <br>
-                {{ article.content }}
-                <br>
-                {{ article.hitcount }}
-                <br>
-                {% if app.user != null %}
-                {% if app.user.admin == true %}
-                <a href="{{ path('app_article_edit', {'id' : article.id}) }}"> EDIT</a>
-                {% endif %}
-                {% endif %}
-            <br>
-                <br>
+                <div class="article">
+                    <h2><a href="{{ path("app_article_articleid", {'id':article.id}) }}">Articles {{ article.id }} {{ article.title }}</a></h2>
+                    <p>{{ article.summary }}</p>
+                    {{ article.hitcount }}
+                    {% if app.user != null %}
+                        {% if app.user.admin == true %}
+                            <a href="{{ path('app_article_edit', {'id' : article.id}) }}"> EDIT</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
 
             {% endfor %}
+
+            </div>
 
 
             <div class="links">
