@@ -49,5 +49,7 @@ services:
     App\Subscribers\CommentSubscriber:
         public: true
 
-
+    App\Vote\calculeVote:
+        public: true
+        arguments: ["@doctrine.orm.entity_manager"]
 

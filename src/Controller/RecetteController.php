@@ -118,11 +118,15 @@ class RecetteController extends Controller
             $dispatcher->dispatch(AppEvent::COMMENT_ADD, $commentEvent);
             return $this->redirectToRoute("app_recette_recetteid", ['id'=> $recette->getId()]);
         }
+        /**@var \App\Vote\calculeVote $moyenne */
+        $moyenne = $this->get(\App\Vote\calculeVote::class);
+        $resultat = $moyenne->moyenVote($recette);
         return $this->render('recette/recetteid.html.twig',[
             'recette'=>$recette,
             'comments' => $comments,
             'form' => $form->createView(),
             'form2' => $form2->createView(),
+            'moyenne' => $resultat,
         ]);
     }
 
