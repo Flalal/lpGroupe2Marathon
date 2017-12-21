@@ -172,3 +172,12 @@ body{
     width: 100%;
     background-color: #f5d057;
 }
+
+@media screen and (max-device-width : 500px){
+    #nav {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-row: repeat(9, 1fr);
+    }
+
+}
