@@ -8,6 +8,7 @@ body{
     background-color: #f8f8f8;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
+    font-family: 'Nunito', sans-serif;
 }
 
 #nav a{
