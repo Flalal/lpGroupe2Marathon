@@ -15,9 +15,9 @@
                 <li>Crée le : {{ recette.createdAt | date }}</li>
                 <li>Mise à jour le  : {{ recette.updatedAt | date}}</li></br>
             </ul>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+            {{ form_start(formVote) }}
+            {{ form_widget(formVote) }}
+            {{ form_end(formVote) }}
 
             <b>Moyenne vote : {{ moyenne }}</b>
 
@@ -25,11 +25,17 @@
             {% for comment in comments %}
                 {{ comment.content }}</br>
                 Crée le :{{ comment.createdAt | date }} - Modification le : {{ comment.updatedAt | date }}</br>
+                {% if app.user %}
+                    {% if app.user.admin %}
+                        <a href="{{ path('app_recette_editcommentaire', {'id' : comment.id}) }}"><button>Modification</button></a></br>
+                        <a href="{{ path('app_recette_deletecommentaire', {'id' : comment.id}) }}"><button>Supprimer</button></a></br>
+                    {% endif %}
+                {% endif %}
             {% endfor %}
 
-            {{ form_start(form2) }}
-            {{ form_widget(form2) }}
-            {{ form_end(form2) }}
+            {{ form_start(formComment) }}
+            {{ form_widget(formComment) }}
+            {{ form_end(formComment) }}
             <br>
             {% if app.user %}
                 {% if app.user.admin %}
