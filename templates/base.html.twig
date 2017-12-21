@@ -6,12 +6,13 @@
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('build/css/style.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('build/css/bootstrap.css/bootstrap.min.css') }}">
-            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/article.css') }}">{% endblock %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('build/css/article.css') }}">
+        {% endblock %}
         {% block javascript %}
-            {% javascripts
+            
                 '@build/js/jquery.js/jquery.min.js'
                 '@build/js/bootstrap.bundle.js/bootsrap.bundle.min.js'
-            %}
+            
 
         {% endblock %}
     </head>
