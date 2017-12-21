@@ -3,7 +3,7 @@
     height: 20vh;
     background-color: #f8f8f8;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(9, 1fr);
 }
 
 #nav a{
@@ -18,31 +18,40 @@
 }
 
 #admin{
-    grid-column: 2/3;
-}
-
-#recette{
-    grid-column: 3/4;
-}
-
-#article{
     grid-column: 4/5;
 }
 
-#depo-recette{
-    grid-column: 5/6;
-}
+#recette{
 
-#depo-article{
-    grid-column: 6/7;
-}
-
-#log{
     grid-column: 7/8;
 }
 
+#article{
+    grid-column: 8/9;
+}
+
+#depo-recette{
+    grid-column: 3/4;
+}
+
+#depo-article{
+    grid-column: 4/5;
+}
+
+#log{
+    grid-column: 5/6;
+}
+
+#login{
+    grid-column: 6/7;
+}
+
+#login{
+    grid-column: 8/9;
+}
+
 #recherche_p{
-    grid-row: 2/2;
+    grid-row: 1/2;
     grid-column: 2/-1;
 }
 
