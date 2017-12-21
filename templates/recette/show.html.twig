@@ -5,6 +5,7 @@
         {% include 'navbar.html.twig' %}
 
         <div class="content">
+            <a href="{{ path('app_recette_tri', { "option" : "comment" }) }}"></a>
             <h1>~~~ Recettes ~~~</h1>
             {% if app.user.admin == true %}
                 <a href="{{ path("app_recette_add")}}"><button>Ajouter</button></a>

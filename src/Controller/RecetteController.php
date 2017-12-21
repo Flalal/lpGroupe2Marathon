@@ -87,7 +87,6 @@ class RecetteController extends Controller
      * @Route("/{id}", name="app_recette_recetteid")
      */
     public function showRecetteId(Request $request, Recipe $recette){
-
         $em = $this->getDoctrine()->getManager();
         $comments = $em->getRepository(Comment::class)->findBy(['recipe' => $recette->getId()]);
 
@@ -126,6 +125,13 @@ class RecetteController extends Controller
         ]);
     }
 
-
+    /**
+     * @Route("/show/{option}", name="app_recette_tri", defaults={"option"="id"})
+     */
+    public function showTri($option){
+        $em = $this->getDoctrine()->getManager();
+        $recipes = $em->getRepository(Recipe::class)->findBy([],[$option => "DESC"]);
+        return $this->render('recette/show.html.twig',['recettes'=>$recipes, ]);
+    }
 
 }
