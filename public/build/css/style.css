@@ -22,23 +22,28 @@
 }
 
 #recette{
-    grid-column: 2/3;
+
+    grid-column: 7/8;
 }
 
 #article{
-    grid-column: 3/4;
+    grid-column: 8/9;
 }
 
 #depo-recette{
-    grid-column: 5/6;
+    grid-column: 3/4;
 }
 
 #depo-article{
-    grid-column: 6/7;
+    grid-column: 4/5;
 }
 
 #log{
-    grid-column: 7/8;
+    grid-column: 5/6;
+}
+
+#login{
+    grid-column: 6/7;
 }
 
 #login{
