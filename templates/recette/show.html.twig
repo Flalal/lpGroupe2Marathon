@@ -32,6 +32,7 @@
                     {% if app.user.admin == true %}
                         <a href="{{ path("app_recette_edit", {"id" : recette.id})}}"><button>Modifier</button></a>
                     {% endif %}
+                {% endif %}
                 </ul>
             {% endfor %}
             <a href="{{ path('app_recette_show', { "option" : "note" }) }}"><button>Trier par note</button></a>
