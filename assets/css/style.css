@@ -1,3 +1,7 @@
+#body{
+    margin: 0!important;
+}
+
 #nav{
     align-items: center;
     height: 20vh;
@@ -18,36 +22,36 @@
 }
 
 #admin{
-    grid-column: 4/5;
+    grid-column: 5/6;
 }
 
 #recette{
 
-    grid-column: 7/8;
+    grid-column: 2/3;
 }
 
 #article{
-    grid-column: 8/9;
-}
-
-#depo-recette{
     grid-column: 3/4;
 }
 
-#depo-article{
-    grid-column: 4/5;
-}
-
-#log{
-    grid-column: 5/6;
-}
-
-#login{
+#depo-recette{
     grid-column: 6/7;
 }
 
+#depo-article{
+    grid-column: 7/8;
+}
+
+#log{
+    grid-column: 8/9;
+}
+
+#login{
+    grid-column: 4/5;
+}
+
 #recherche_p{
-    grid-row: 2/2;
+    grid-row: 1/2;
     grid-column: 2/-1;
 }
 
