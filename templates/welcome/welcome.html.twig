@@ -115,7 +115,7 @@
                     <h4 class="card-title">
                         <a href="{{  path("app_recette_recetteid", {"id" :recette.id}) }}"> {{ recette.name }}</a>
                     </h4>
-                    <p class="card-text"><?php substr({{ recette.steps }}, 0, 45) ?></p>
+                    <p class="card-text">{{ recette.steps| truncate(20, false, '...') }}</p>
                 </div>
             </div>
         </div>
