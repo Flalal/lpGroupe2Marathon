@@ -134,4 +134,18 @@ class RecetteController extends Controller
         return $this->render('recette/show.html.twig',['recettes'=>$recipes, ]);
     }
 
+    /**
+     * @Route("/delete/{id}", name="app_recette_delete")
+     */
+    public function delete(Recipe $recipe){
+        $recetteEvent = $this->get(RecetteEvent::class);
+        /** @var RecetteEvent $recetteEvent */
+        $recetteEvent->setRecette($recipe);
+
+
+        $dispatcher = $this->get('event_dispatcher');
+        $dispatcher->dispatch(AppEvent::RECETTE_DELETE, $recetteEvent);
+
+        return $this->redirectToRoute('app_recette_show');
+    }
 }

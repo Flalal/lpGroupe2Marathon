@@ -44,7 +44,7 @@ class ArticleController extends Controller
             $articleEvent->setArticle($article);
 
             $dispatcher = $this->get('event_dispatcher');
-            $dispatcher->dispatch(AppEvent::EDIT_ARTICLE, $articleEvent);
+            $dispatcher->dispatch(AppEvent::ARTICLE_EDIT, $articleEvent);
 
 
             return $this->redirectToRoute('welcome');
@@ -69,7 +69,7 @@ class ArticleController extends Controller
             $articleEvent->setArticle($article);
 
             $dispatcher = $this->get('event_dispatcher');
-            $dispatcher->dispatch(AppEvent::CREATE_ARTICLE, $articleEvent);
+            $dispatcher->dispatch(AppEvent::ARTICLE_CREATE, $articleEvent);
 
 
             return $this->redirectToRoute('welcome');
@@ -98,4 +98,18 @@ class ArticleController extends Controller
         return $this->render('article/show.html.twig',['articles'=>$articles, ]);
     }
 
+    /**
+     * @Route("/delete/{id}", name="app_article_delete")
+     */
+    public function delete(Article $article){
+        $articleEvent = $this->get(ArticleEvent::class);
+        /** @var ArticleEvent $articleEvent */
+        $articleEvent->setArticle($article);
+
+
+        $dispatcher = $this->get('event_dispatcher');
+        $dispatcher->dispatch(AppEvent::ARTICLE_DELETE, $articleEvent);
+
+        return $this->redirectToRoute('app_article_show');
+    }
 }

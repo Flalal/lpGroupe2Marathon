@@ -8,9 +8,9 @@ final class AppEvent
     const RECETTE_EDIT = "app.recette.edit";
     const RECETTE_DELETE = "app.recette.delete";
 
-    const EDIT_ARTICLE = 'app.article.edit';
-    const CREATE_ARTICLE = 'app.article.create';
-    const DELETE_ARTICLE = 'app.article.delete';
+    const ARTICLE_EDIT = 'app.article.edit';
+    const ARTICLE_CREATE = 'app.article.create';
+    const ARTICLE_DELETE = 'app.article.delete';
 
     const COMMENT_ADD = "app.comment.add";
 

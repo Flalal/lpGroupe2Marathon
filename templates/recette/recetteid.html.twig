@@ -30,7 +30,12 @@
             {{ form_start(form2) }}
             {{ form_widget(form2) }}
             {{ form_end(form2) }}
-
+            <br>
+            {% if app.user %}
+                {% if app.user.admin %}
+                    <a href="{{ path('app_recette_delete', {'id' : recette.id}) }}">DELETE</a>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
