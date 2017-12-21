@@ -35,4 +35,37 @@
     </div>
 
 </div>
+<div id="nav-mob">
+    <div id="logo">
+        <a href="{{ path('welcome') }}"> <img src="./build/img/logo.png"></a>
+    </div>
+
+    {% if app.user %}
+        {% if app.user.isAdmin %}
+            <div id="admin"><a href="{{ path('admin') }}">Admin</a></div>
+            <div id="depo-recette"><a href="{{ path('app_recette_add') }}">Déposer une recette</a></div>
+            <div id="depo-article"><a href="{{ path('app_article_creation') }}">Déposer un article</a></div>
+        {% endif %}
+        <div id="log">
+            <a href="{{ path('logout') }}">Logout</a>
+        </div>
+    {% else %}
+        <div id="login">
+            <a href="{{ path('login') }}">Login</a>
+            <a href="{{ path('register') }}">Register</a>
+        </div>
+    {% endif %}
+
+    <div id="recette"><a href="{{ path('app_recette_show') }}">Recette</a></div>
+    <div id="article"><a href="{{ path('app_article_show') }}">Article</a></div>
+
+
+    <div id="recherche_p">
+        <form class="form-wrapper">
+            <input type="text" placeholder="Search here..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+</div>
 <div id="barre"></div>

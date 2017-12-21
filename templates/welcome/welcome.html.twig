@@ -1,21 +1,6 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="flex-center position-ref full-height">
-
-        <div class="content">
-            <div class="title m-b-md">
-                Yummy
-            </div>
-
-            <div class="links">
-                <a href="http://www.iut-lens.univ-artois.fr">Marathon du Web</a>
-            </div>
-
-
-
-        </div>
-    </div>
 
     <!--Slide-->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -29,8 +14,8 @@
             <!-- Slide One - Set the background image for this slide in the line below -->
             <div class="carousel-item active" style="background-image: url('./build/img/slidenoel.jpg')">
                 <div class="carousel-caption d-none d-md-block">
-                    <h1 class="titre">Découvrez </br> nos recettes de noël</h1>
-                    <a href="#" target="_blank"> <input type="button" value="Les Recettes" class="bouton"></a>
+                    <h1 class="titre">Découvrez </br> nos recettes</h1>
+                    <a href="{{ path('app_recette_show') }}" target="_blank"> <input type="button" value="Les Recettes" class="bouton"></a>
                 </div>
             </div>
 

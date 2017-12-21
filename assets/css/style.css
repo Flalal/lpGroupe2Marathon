@@ -15,6 +15,10 @@ body{
     font-family: 'Nunito', sans-serif;
 }
 
+#nav-mob{
+    display: none;
+}
+
 #nav a{
     color: #223a5d;
     text-decoration: none;
@@ -170,9 +174,10 @@ body{
 
 @media screen and (max-device-width : 500px){
     #nav {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-row: repeat(9, 1fr);
+        display: none;
     }
-
+    #nav-mob{
+        display: grid;
+        background-color: red;
+    }
 }
