@@ -17,6 +17,7 @@ use App\Event\RecetteEvent;
 use App\Event\VoteEvent;
 use App\Form\CommentType;
 use App\Form\RecetteType;
+use App\Form\SearchType;
 use App\Form\VoteType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -99,8 +100,8 @@ class RecetteController extends Controller
     public function editRecette(Request $request, Recipe $recette){
 
         $form = $this->createForm(RecetteType::class, $recette);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $recetteEvent = $this->get(RecetteEvent::class);
@@ -123,40 +124,27 @@ class RecetteController extends Controller
         $comments = $em->getRepository(Comment::class)->findBy(['recipe' => $recette->getId()]);
 
         $vote = $this->get(Vote::class);
-        $form = $this->createForm(VoteType::class, $vote);
+        $formVote = $this->getFormVoteType($request, $vote);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $voteEvent = $this->get(VoteEvent::class);
-            /** @var VoteEvent $voteEvent */
-            $voteEvent->setVote($vote);
-            $voteEvent->setRecette($recette);
-            $dispatcher = $this->get('event_dispatcher');
-            $dispatcher->dispatch(AppEvent::VOTE_ADD, $voteEvent);
-            return $this->redirectToRoute("app_recette_recetteid", ['id'=> $recette->getId()]);
+        if ($formVote->isSubmitted() && $formVote->isValid()) {
+            return $this->handleVoteEvent($recette, $vote);
         }
 
         $comment = $this->get(Comment::class);
-        $form2 = $this->createForm(CommentType::class, $comment);
+        $formComment = $this->getFormCommentType($request, $comment);
 
-        $form2->handleRequest($request);
-        if ($form2->isSubmitted() && $form2->isValid()) {
-            $commentEvent = $this->get(CommentEvent::class);
-            /** @var CommentEvent $commentEvent */
-            $commentEvent->setComment($comment);
-            $commentEvent->setRecette($recette);
-            $dispatcher = $this->get('event_dispatcher');
-            $dispatcher->dispatch(AppEvent::COMMENT_ADD, $commentEvent);
-            return $this->redirectToRoute("app_recette_recetteid", ['id'=> $recette->getId()]);
+        if ($formComment->isSubmitted() && $formComment->isValid()) {
+            return $this->handleCommentEvent($recette, $comment,AppEvent::COMMENT_ADD);
         }
+
         /**@var \App\Vote\calculeVote $moyenne */
         $moyenne = $this->get(\App\Vote\calculeVote::class);
         $resultat = $moyenne->moyenVote($recette);
         return $this->render('recette/recetteid.html.twig',[
             'recette'=>$recette,
             'comments' => $comments,
-            'form' => $form->createView(),
-            'form2' => $form2->createView(),
+            'formVote' => $formVote->createView(),
+            'formComment' => $formComment->createView(),
             'moyenne' => $resultat,
         ]);
     }
@@ -168,10 +156,113 @@ class RecetteController extends Controller
         /** @var RecetteEvent $recetteEvent */
         $recetteEvent->setRecette($recipe);
 
-
         $dispatcher = $this->get('event_dispatcher');
         $dispatcher->dispatch(AppEvent::RECETTE_DELETE, $recetteEvent);
 
         return $this->redirectToRoute('app_recette_show');
     }
+
+    /**
+     * @Route("/edit/commentaire/{id}", name="app_recette_editcommentaire")
+     */
+    public function editCommentaire(Request $request, Comment $comment ){
+
+
+        $vote = $this->get(Vote::class);
+        $formVote = $this->getFormVoteType($request, $vote);
+
+        if ($formVote->isSubmitted() && $formVote->isValid()) {
+            return $this->handleVoteEvent($comment->getRecipe(), $vote);
+        }
+
+        $formComment = $this->getFormCommentType($request, $comment);
+        if ($formComment->isSubmitted() && $formComment->isValid()) {
+           return $this->handleCommentEvent($comment->getRecipe(), $comment, AppEvent::COMMENT_EDIT);
+        }
+        /**@var \App\Vote\calculeVote $moyenne */
+        $moyenne = $this->get(\App\Vote\calculeVote::class);
+        $resultat = $moyenne->moyenVote($comment->getRecipe());
+        return $this->render("recette/recetteid.html.twig", [
+            'recette'=> $comment->getRecipe(),
+            'formVote'=>$formVote->createView(),
+            'formComment' => $formComment->createView(),
+            'moyenne'=>$resultat,
+            'comments' => $comment,
+        ]);
+    }
+
+    /**
+     * @Route("/delete/commentaire/{id}", name="app_recette_deletecommentaire")
+     */
+    public function deleteCommentaire(Request $request, Comment $comment){
+        $this->getDoctrine()->getManager()->remove($comment);
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('app_recette_recetteid', ['id'=> $comment->getRecipe()->getId()]);
+    }
+
+    /**
+     * @param Request $request
+     * @param Comment $comment
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    private function getFormCommentType(Request $request, Comment $comment)
+    {
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->handleRequest($request);
+        return $form;
+    }
+
+    /**
+     * @param Recipe $recette
+     * @param $comment
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    private function handleCommentEvent(Recipe $recette, $comment, $type)
+    {
+        $commentEvent = $this->get(CommentEvent::class);
+        /** @var CommentEvent $commentEvent */
+        $commentEvent->setComment($comment);
+        $commentEvent->setRecette($recette);
+        $dispatcher = $this->get('event_dispatcher');
+        if($type == AppEvent::COMMENT_ADD)
+        {
+            $dispatcher->dispatch(AppEvent::COMMENT_ADD, $commentEvent);
+
+            return $this->redirectToRoute("app_recette_recetteid", ['id' => $recette->getId()]);
+        } else {
+            $dispatcher->dispatch(AppEvent::COMMENT_EDIT, $commentEvent);
+            return $this->redirectToRoute('app_recette_recetteid', ['id'=> $comment->getRecipe()->getId()]);
+        }
+    }
+
+    /**
+     * @param Recipe $recette
+     * @param $vote
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    private function handleVoteEvent(Recipe $recette, $vote)
+    {
+        $voteEvent = $this->get(VoteEvent::class);
+        /** @var VoteEvent $voteEvent */
+        $voteEvent->setVote($vote);
+        $voteEvent->setRecette($recette);
+        $dispatcher = $this->get('event_dispatcher');
+        $dispatcher->dispatch(AppEvent::VOTE_ADD, $voteEvent);
+        return $this->redirectToRoute("app_recette_recetteid", ['id' => $recette->getId()]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $vote
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    private function getFormVoteType(Request $request, $vote)
+    {
+        $form = $this->createForm(VoteType::class, $vote);
+
+        $form->handleRequest($request);
+        return $form;
+    }
+
 }

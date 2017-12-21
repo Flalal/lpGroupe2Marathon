@@ -33,6 +33,7 @@ class CommentSubscriber implements EventSubscriberInterface
     {
         return array(
             AppEvent::COMMENT_ADD => 'commentAdd',
+            AppEvent::COMMENT_EDIT => 'commentEdit',
         );
     }
 
@@ -44,6 +45,15 @@ class CommentSubscriber implements EventSubscriberInterface
         $comment->setUpdatedAt(new \DateTime("now"));
         $comment->setRecipe($commentEvent->getRecette());
         $comment->setUser($this->token->getToken()->getUser());
+        $this->em->persist($comment);
+        $this->em->flush();
+    }
+
+    public function commentEdit(CommentEvent $commentEvent){
+
+        $comment = $commentEvent->getComment();
+        /** @var Comment $comment */
+        $comment->setUpdatedAt(new \DateTime("now"));
         $this->em->persist($comment);
         $this->em->flush();
     }
