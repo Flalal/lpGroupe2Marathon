@@ -7,13 +7,26 @@
     justify-content: center;
 }
 .grid .article{
-    background-color: blue;
+    background-color: #f8f8f8;
 }
 
 .grid .article > h2{
-    background-color: red;
+    padding: 0 5px 0 5px;
 }
 
 .grid .article > p{
-    font-style: italic;
+    padding: 0 5px 0 5px;
+}
+
+.article .imgarticle{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    width: 100%;
+    height: 150px;
 }
