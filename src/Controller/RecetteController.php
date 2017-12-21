@@ -49,7 +49,6 @@ class RecetteController extends Controller
                 'moyennes' => $lesMoyennes,
             ]);
         }
-
         if($option == "comments"){
             $requete = $em->createQuery("SELECT r, count(c.id) AS nbComment FROM App\Entity\Recipe r JOIN r.comments c GROUP BY r.id ORDER BY nbComment DESC");
             $nbComments = $requete->getResult();
@@ -63,6 +62,10 @@ class RecetteController extends Controller
                 'recettes'=>$recettes,
                 'nbComments' => $lesComments,
             ]);
+        }
+
+        if($option == "decroissant"){
+            $recettes = $em->getRepository(Recipe::class)->findBy([],['id'=>'DESC']);
         }
         return $this->render('recette/show.html.twig',[
             'recettes'=>$recettes,
